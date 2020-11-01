@@ -69,7 +69,7 @@ public class boxcastt : MonoBehaviour
             //Draw a Ray forward from GameObject toward the maximum distance
             Gizmos.DrawRay(transform.position, transform.forward * m_MaxDistance);
             //Draw a cube at the maximum distance
-            Gizmos.DrawWireCube(transform.position + transform.forward * m_MaxDistance, transform.localScale);
+            //Gizmos.DrawWireCube(transform.position + transform.forward * m_MaxDistance, transform.localScale);
         }
     }
 }
