@@ -1,0 +1,44 @@
+01.11.2020
+
+PHYSICS 
+
+1- 	Particle System ama Phsysicle basladik.Unity nin kendi sayfasinda güzel bir script var . dikkat ceken kisim, burasi. burayla oynaycaz.
+
+ m_HitDetect = Physics.BoxCast(m_Collider.bounds.center, transform.localScale, transform.forward, out m_Hit, transform.rotation, m_MaxDistance);
+        if (m_HitDetect)
+        {
+            //Output the name of the Collider your Box hit
+            Debug.Log("Hit : " + m_Hit.collider.name);
+        }
+
+	mcollider objenin collideri bunun merkezinden bir ray atiyoruz. bounds.center bu. transform.localScale ise parent obje yani bizim küpün boyutu. Bu boyutta küp olusturuyor
+	simdi bunu new Vector3(2,2,2) yapinca daha büyük bir küp cast ediliyor.
+
+2-	kodun devaminda ne attigimizi görebilmemiz icin bir de gizmo cizdik. o da su.
+
+	void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        //Check if there has been a hit yet
+        if (m_HitDetect)
+        {
+            //Draw a Ray forward from GameObject toward the hit
+            Gizmos.DrawRay(transform.position, transform.forward * m_Hit.distance);
+            //Draw a cube that extends to where the hit exists
+            Gizmos.DrawWireCube(transform.position + transform.forward * m_Hit.distance, transform.localScale);
+        } else kismini sildim
+
+	All gizmo drawing has to be done in either OnDrawGizmos or OnDrawGizmosSelected functions of the script.
+	OnDrawGizmos is called every frame. All gizmos rendered within OnDrawGizmos are pickable.
+ 	OnDrawGizmosSelected is called only if the object the script is attached to is selected.
+
+	burda küp yerine daha baska seyler de cizebiliyoruz.
+
+	Gizmos.DrawGUITexture(new Rect(10, 10, 20, 20), myTexture);  ekrana resim cikartio . iyi lan bayagi aslinda canvasa koyarsi bunubirseyin üstüne gelince resim cikartir.
+	Gizmos.DrawLine(transform.position, target.position);
+	 Gizmos.DrawWireSphere....  
+	bayagi birsey var neyse. önemli olan bu Monobehaviourun bir fonksyionu ve updatele calisio.Gizmolar birseyo görsellestrmek icin kullnailio
+
+3_	Burdan layerlara geciyoruz gecmezsek olmaz cünkü raycastin temel konusu;
+aasdasdasdad
